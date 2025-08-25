@@ -8,8 +8,9 @@ export class OrderController {
     constructor(private readonly orderService: OrderService) { }
 
     @MessagePattern('create_order')
-    handleCreateOrder(@Payload() payload: CreateOrderDto) {
-        this.orderService.create(payload)
+    handleCreateOrder(@Payload() payload: any) {
+        console.log('Received create_order:', payload);
+        this.orderService.create(payload);
     }
 
     @MessagePattern('get_orders')
